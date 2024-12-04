@@ -18,6 +18,7 @@ from easyocr.detection import get_detector, get_textbox
 import cv2
 
 #from trocr.src.main import TrocrPredictor
+from utils import *
 
 from omegaconf import OmegaConf
 from saicinpainting.evaluation.utils import move_to_device
