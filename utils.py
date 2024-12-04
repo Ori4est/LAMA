@@ -48,7 +48,8 @@ def convert_from_image_to_cv2(img: Image) -> np.ndarray:
     else:
         raise ValueError(f"Invalid mode: {img.mode}")
 
-  def style_detect(img, boundary_pts, color_thres=40):
+
+def style_detect(img, boundary_pts, color_thres=40):
     # for human part ONLY
     bg_color = False
     row, col, channel = img.shape
