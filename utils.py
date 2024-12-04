@@ -1,3 +1,6 @@
+import cv2
+import numpy as np
+
 def load_image(fname, mode='RGB', return_orig=False):
     img = np.array(Image.open(fname).convert(mode))
     if img.ndim == 3:
@@ -107,7 +110,7 @@ def style_detect(img, boundary_pts, color_thres=40):
 
     n_iter = 1
     kernel = 5 #max(int(wh[0] / 10), int(wh[1] / 10))
-    print(f'kernel check it out {kernel}')
+    #print(f'kernel check it out {kernel}')
     bound_ext0 = cv2.dilate(alpha_mask, (kernel, kernel), iterations=n_iter)
     var_edge_0 = np.where((bound_ext0 == 255) & (alpha_mask == 0))
     edge_0_colors = img[:,:,:3][var_edge_0[0], var_edge_0[1]]
@@ -123,7 +126,7 @@ def style_detect(img, boundary_pts, color_thres=40):
         edge_0_mean = np.mean(edge_0_colors, axis=0)
         dist_0 = np.sqrt(np.sum((edge_0_mean - background_color)**2))
         bound_ext0 = bound_ext1 # renew
-        print(f"find the edge {dist_0} {n_iter}")
+        #print(f"find the edge {dist_0} {n_iter}")
         bg_color = True
     if n_iter * kernel > min(int(wh[0]), int(wh[1])):
         bg_color = False
