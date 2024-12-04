@@ -149,7 +149,7 @@ def text_removal(input_dir, output_dir, config_path="configs/prediction/default.
         
 
 
-def text_style_recog_removal(input_dir, output_dit, max_radius=10, lama_config="/content/LAMA/configs/prediction/default.yaml", **kw_args):
+def text_style_recog_removal(input_dir, output_dir, max_radius=10, lama_config="/content/LAMA/configs/prediction/default.yaml", **kw_args):
     ## processing start
     image_filename_list = glob(input_dir+'/**/**/*.*')[:20]
     images_path = [os.path.join(input_dir, file_path) for file_path in image_filename_list]
