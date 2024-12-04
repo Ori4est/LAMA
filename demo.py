@@ -36,6 +36,17 @@ from saicinpainting.utils import register_debug_signal_handlers
 
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
+# Note: English is compatible with all languages. Languages that share most of character (e.g. latin script) with each other are compatible.
+# this needs to run only once to load the model into memory
+reader_EF = easyocr.Reader(['en', 'fr'])
+#reader_CN = easyocr.Reader(['cn_sim', 'cn_tra'])
+#reader_JP = easyocr.Reader(['ja', 'en'])
+#reader_KR = easyocr.Reader(['ko', 'en'])
+#reader_DE = easyocr.Reader(['en', 'de']) # German
+#reader_IT = easyocr.Reader(['en', 'it']) # Italian
+#reader_ES = easyocr.Reader(['en', 'es']) # Spanish
+#reader_PT = easyocr.Reader(['en', 'pt']) # Portuguese
+
 def text_removal(input_dir, output_dir, config_path="configs/prediction/default.yaml", **kw_args):
     ## processing start
     image_filename_list = glob(input_dir+'/**/**/*.*')
